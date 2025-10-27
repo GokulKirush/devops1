@@ -1,0 +1,19 @@
+docker build -t sample .
+docker run -it --name my-java-container sample
+
+DOCKER FILE
+
+# Use official OpenJDK image
+FROM openjdk:17-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy everything to /app
+COPY . /app
+
+# Compile the Java program
+RUN javac Calculator.java
+
+# Run the compiled Java class
+CMD ["java", "Calculator"]
